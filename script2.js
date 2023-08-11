@@ -129,3 +129,25 @@ bookmarkForm.addEventListener('submit', storeBookmark);
 
 // On Load, Fetch Bookmarks
 fetchBookmarks();
+
+// Consent modal
+const consentModal = document.getElementById('consent-modal');
+const consentButton = document.getElementById('consent-button');
+
+// Show consent modal if not accepted yet
+function showConsentModal() {
+	const consentGiven = localStorage.getItem('consentGiven');
+	if (!consentGiven) {
+		consentModal.style.display = 'block';
+	}
+}
+
+// Consent button event listener
+consentButton.addEventListener('click', () => {
+	localStorage.setItem('consentGiven', 'true');
+	consentModal.style.display = 'none';
+});
+
+// Show the consent modal
+showConsentModal();
+
